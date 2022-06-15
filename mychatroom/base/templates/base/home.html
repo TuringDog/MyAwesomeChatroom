@@ -1,7 +1,39 @@
-<h1>HELLOWORLD!!!</h1>
+<style>
+    .home-container{
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+    }
+</style>
 
-<div>
-    {% for room in rooms %}
-        <h5>{{room.id}}--{{room.name}}</h5>
-    {% endfor %}
+<h1>Welcome to My Awesome Chatroom !!!</h1>
+{% include 'navbar.html' %}
+
+<div class="home-container">
+    <div>
+        <h3>Browse Topics</h3>
+        <hr>
+        <div>
+            <a href="{% url 'home' %}">All</a>
+        </div>
+        {% for topic in topics %}
+            <div>
+                <a href="{% url 'home' %}?q={{topic.name}}">{{topic.name}}</a>
+            </div>
+        {% endfor %}
+    </div>
+    <div>
+        <div>
+            <h3>{{room_count}} rooms available.</h3>
+        </div>
+        {% for room in rooms %}
+            <a href="{% url 'update-room' room.id %}">Edit This Room</a>
+            <a href="{% url 'delete-room' room.id %}">Delete This Room</a>
+            <span>@{{room.host.username}}</span>
+            <h5>{{room.id}}--<a href="/room/{{room.id}}">{{room.name}}</a></h5>
+            <small>{{room.topic.name}}</small><hr>
+        {% endfor %}
+        <div>
+            <a href="{% url 'create-room' %}">Create Room</a>
+        </div>
+    </div> 
 </div>
