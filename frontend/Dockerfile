@@ -4,5 +4,7 @@ WORKDIR /app/frontend
 COPY . .
 RUN npm install
 ENV PORT=3000
+
+# CMD ["npm","start"]
+RUN npm run build
 EXPOSE ${PORT}
-CMD ["npm","start"]
