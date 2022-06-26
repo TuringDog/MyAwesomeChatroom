@@ -13,9 +13,9 @@ services:
     container_name: react_container
 
   backend:
-    restart: always
+    # restart: always
     build: 
-      context: ./mychatroom/
+      context: ./mychatroom
     volumes:
       - .:/django
     ports:
