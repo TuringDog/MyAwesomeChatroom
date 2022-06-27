@@ -15,7 +15,7 @@ services:
   backend:
     # restart: always
     build: 
-      context: ./mychatroom
+      context: ./mychatroom/
     volumes:
       - .:/django
     ports:
