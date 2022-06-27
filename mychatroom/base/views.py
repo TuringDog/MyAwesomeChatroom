@@ -9,6 +9,10 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import Room, Topic, Message
 from .forms import RoomForm
 
+from rest_framework import generics
+
+from .serializers import RoomSerializer
+
 def loginPage(request):
     page='login'
     if request.user.is_authenticated:
@@ -48,17 +52,24 @@ def logoutUser(request):
     logout(request)
     return redirect('home')
 
-def home(request):
-    q=request.GET.get('q') if request.GET.get('q')!=None else ''
-    rooms=Room.objects.filter(
-        Q(topic__name__icontains=q) | 
-        Q(name__icontains=q) |
-        Q(description__icontains=q)
-        )
-    room_count=rooms.count()
-    topics=Topic.objects.all()
-    context={'rooms':rooms, 'topics':topics, 'room_count':room_count}
-    return render(request, 'base/home.html', context)
+# def home(request):
+    # q=request.GET.get('q') if request.GET.get('q')!=None else ''
+    # rooms=Room.objects.filter(
+    #     Q(topic__name__icontains=q) | 
+    #     Q(name__icontains=q) |
+    #     Q(description__icontains=q)
+    #     )
+    # room_count=rooms.count()
+    # topics=Topic.objects.all()
+    # context={'rooms':rooms, 'topics':topics, 'room_count':room_count}
+    # return render(request, 'base/home.html', context)
+
+class RoomList(generics.ListCreateAPIView):
+    queryset = Room.objects.all()
+    serializer_class = RoomSerializer
+# class PostList(generics.ListCreateAPIView):
+#     queryset = Post.objects.all()
+#     serializer_class = PostSerializer
 
 def room(request, pk):
     room=Room.objects.get(id=pk) 
