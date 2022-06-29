@@ -1,5 +1,2 @@
 *.pyc
 temp/
-__pycache__
-*.log
-*.pot
