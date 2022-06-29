@@ -6,8 +6,8 @@
 </style>
 
 <h1>Welcome to My Awesome Chatroom !!!</h1>
-{% include 'navbar.html' %}
-
+{% extends 'main.html' %}
+{% block content %}
 <div class="home-container">
     <div>
         <h3>Browse Topics</h3>
@@ -26,14 +26,18 @@
             <h3>{{room_count}} rooms available.</h3>
         </div>
         {% for room in rooms %}
-            <a href="{% url 'update-room' room.id %}">Edit This Room</a>
-            <a href="{% url 'delete-room' room.id %}">Delete This Room</a>
-            <span>@{{room.host.username}}</span>
             <h5>{{room.id}}--<a href="/room/{{room.id}}">{{room.name}}</a></h5>
-            <small>{{room.topic.name}}</small><hr>
+            <small>{{room.topic.name}}</small>
+            <span>@{{room.host.username}}</span>
+            {% if request.user == room.host %}
+                <a href="{% url 'update-room' room.id %}">Edit This Room</a>
+                <a href="{% url 'delete-room' room.id %}">Delete This Room</a>
+            {% endif %}
+            <hr>
         {% endfor %}
         <div>
             <a href="{% url 'create-room' %}">Create Room</a>
         </div>
     </div> 
 </div>
+{% endblock content %}
