@@ -1,23 +1,46 @@
 {% extends 'main.html' %}
 {% block content %}
-<h2>{{room.name}}</h2>
-<p>{{room.description}}</p>
-<div>
-    {% for message in room_messages %}
+<style>
+    .room-container{
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+    }
+</style>
+<div class="room-container">
+    <div>
+        <h2>{{room.name}}</h2>
+        <p>{{room.description}}</p>
         <div>
-            <small>@{{message.user}};{{message.created|timesince}} ago.</small>
-            <p>{{message.body}}</p><hr>
+            {% for message in room_messages %}
+                <div>
+                    <small><a href="{% url 'user-profile' message.user.id %}">@{{message.user}}</a> ;{{message.created|timesince}} ago.</small>
+                    {% if request.user == message.user %}
+                        <a href="{% url 'delete-message' message.id %}">Revoke message</a>
+                    {% endif %}
+                    <p>{{message.body}}</p><hr>
+                </div>
+            {% endfor %}
         </div>
-    {% endfor %}
+        
+        {% if request.user.is_authenticated %}
+            <div>
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    <input type="text" name="body" placeholder="Type your message here..."/>
+                    <input type="submit" value="Send!"/> 
+                </form>
+            </div>
+        {% endif %}
+    </div>
+    <div>
+        <h3>Participants</h3>
+        <hr>
+        {% for user in participants %}
+            <div>
+                <a href="{% url 'user-profile' user.id %}">@{{user.username}}</p>
+            </div>
+        {% endfor %}
+    </div>
 </div>
 
-{% if request.user.is_authenticated %}
-    <div>
-        <form method="POST" action="">
-            {% csrf_token %}
-            <input type="text" name="body" placeholder="Type your message here..."/>
-            <input type="submit" value="Send!"/> 
-        </form>
-    </div>
-{% endif %}
 {% endblock content %}
