@@ -4,7 +4,20 @@
 <form method="POST" action="">
     {% csrf_token %}
     <h3>Username:</h3>
-    <input type="text" name="username" value="{{user.username}}"/>
-    <input type="submit" value="Rename"/>
+    <input type="text" name="nickname" value="{{details.nickname}}"/>
+    <h3>Email Address:</h3>
+    <input type="text" name="email" value="{{user.email}}"/>
+    <h3>Description:</h3>
+    <input type="text" name="description" value="{{details.description}}"/>
+    <h3>Your interested topics:</h3>
+    {% for topic in details.interested_topic.all %}
+        <a href="">{{topic}}</a>
+    {% endfor %}
+    <h3>Chatrooms you have joined:</h3>
+    {% for roomname in details.subscription.all %}
+        <a href="">{{roomname}}</a>
+    {% endfor %}
+    <hr>
+    <input type="submit" value="Update"/>
 </form>
 {% endblock content %}
