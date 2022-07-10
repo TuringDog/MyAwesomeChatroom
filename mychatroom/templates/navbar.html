@@ -1,10 +1,11 @@
 <a href="{% url 'home' %}">My Awesome Chatroom</a>
 <form method="GET" action="{% url 'home' %}">
     <input type="text" name="q" placeholder="Search..." />
+    <input type="submit" value="Search"/>
 </form>
 {% if request.user.is_authenticated %}
-    <h3>Hello {{request.user}}!</h3>
-    <a href="{% url 'logout' %}">Logout</a>
+    <h3>Hello {{request.user}}! <a href="{% url 'logout' %}">Logout</a></h3>
+    <a href="{% url 'update-user' request.user.id %}">Edit user profile.</a>
 {% else %}
     <a href="{% url 'login' %}">Login</a>
 {% endif %}

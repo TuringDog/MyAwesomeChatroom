@@ -1,0 +1,10 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<form method="POST" action="">
+    {% csrf_token %}
+    <h3>Username:</h3>
+    <input type="text" name="username" value="{{user.username}}"/>
+    <input type="submit" value="Rename"/>
+</form>
+{% endblock content %}

@@ -1,0 +1,9 @@
+{% for message in room_messages %}
+    <div>
+        <small>@{{message.user}}</small>
+        <small>replied to "{{message.room}}"</small>
+        <small>{{message.created|timesince}} ago:</small>
+        <p>{{message}}</p>
+        <hr>
+    </div>
+{% endfor %}
