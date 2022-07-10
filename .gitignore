@@ -1,8 +1,5 @@
 *.pyc
 temp/
-<<<<<<< HEAD
-=======
 __pycache__
 *.log
 *.pot
->>>>>>> djangoRESTFramework

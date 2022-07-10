@@ -11,6 +11,11 @@ services:
       - 3000:3000
     image: app:react
     container_name: react_container
+    # for hot reload
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
+    # so it won't stop running
+    stdin_open: true
 
   backend:
     # restart: always

@@ -4,5 +4,6 @@ WORKDIR /react
 # ENV PATH="./node_modules/.bin:$PATH"
 # copy everything(all files/directories on the same level as this Dockerfile into our workdir in container)
 COPY . .
-RUN npm install
-RUN npm run build
+# CMD npm install
+CMD npm start
+# RUN npm run build
