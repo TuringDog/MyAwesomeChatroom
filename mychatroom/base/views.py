@@ -9,9 +9,6 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import Room, Topic, Message
 from .forms import RoomForm
 
-from rest_framework import generics
-
-from .serializers import RoomSerializer
 
 def loginPage(request):
     page='login'
