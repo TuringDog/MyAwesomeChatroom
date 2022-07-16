@@ -28,3 +28,4 @@ def getRoom(request, pk):
     # many -> serialize many objects. True rooms a query of objects
     serializer = RoomSerializer(room, many=False)
     return Response(serializer.data)
+
