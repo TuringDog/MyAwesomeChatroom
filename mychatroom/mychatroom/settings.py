@@ -84,10 +84,22 @@ WSGI_APPLICATION = 'mychatroom.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'djongo',
+        'CLIENT':{
+            'name':'ClusterChatroom', 
+            'host':'mongodb+srv://admin:By3bz3IDGGiRjheL@clusterchatroom.hsm8b5f.mongodb.net/?retryWrites=true&w=majority', 
+            'username':'admin', 
+            'password':'By3bz3IDGGiRjheL', 
+            'authMechanism':'SCRAM-SHA-1'
+        }
     }
 }
 

@@ -6,7 +6,7 @@ from django.db.models import Q
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
-from .models import Room, Topic, Message
+from .models import Room, Topic, Message, UserDetail
 from .forms import RoomForm
 
 
@@ -135,9 +135,14 @@ def deleteMessage(request, pk):
 @login_required(login_url='login')
 def updateUser(request, pk):
     user=User.objects.get(id=pk)
+    details=UserDetail.objects.get(user=user)
+    print(details)
     if request.method=='POST':
-        newname=request.POST.get('username')
-        user.username=newname
+        details.nickname=request.POST.get('nickname')
+        details.description=request.POST.get('description')
+        user.email=request.POST.get('email')
         user.save()
+        details.save()
         return redirect('user-profile', pk=user.id)
-    return render(request, 'base/update_user.html', {'user':user})
+    context={'user':user, 'details':details}
+    return render(request, 'base/update_user.html', context)
