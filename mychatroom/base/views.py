@@ -9,6 +9,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import Room, Topic, Message, UserDetail
 from .forms import RoomForm
 
+
 def loginPage(request):
     page='login'
     if request.user.is_authenticated:

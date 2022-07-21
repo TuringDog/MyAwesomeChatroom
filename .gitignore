@@ -1,2 +1,10 @@
+<<<<<<< HEAD
 __pycache__
 temp/
+=======
+*.pyc
+temp/
+__pycache__
+*.log
+*.pot
+>>>>>>> origin/main
