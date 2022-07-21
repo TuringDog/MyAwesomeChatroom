@@ -5,8 +5,11 @@ import LiaoPage from './pages/liaoPage';
 
 function App() {
   return (
-        <LiaoPage/>
-
+    <div>
+      <LiaoPage/>
+      <RoomList/>
+    </div>
+        
   );
 }
 
