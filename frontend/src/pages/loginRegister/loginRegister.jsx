@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { useSpring, animated } from 'react-spring'
 import reactLogo from '../../assets/react.svg'
-import '../../App.css'
+import './loginRegister.css'
 import RoomCard from '../../components/RoomCard'
 //import test from './test.html'
 
-function LiaoPage() {
+export default function LoginRegister() {
   const [count, setCount] = useState(0)
   const props1 = useSpring({ to: { opacity: 1 }, from: { opacity: 0 }, to:{y:0}, from:{y:-500}, delay:200})
   const props2 = useSpring({ to: { opacity: 1 }, from: { opacity: 0 }, to:{y:0}, from:{y:500}, delay:200})
@@ -41,5 +41,3 @@ function LiaoPage() {
     </div>
   )
 }
-
-export default LiaoPage
