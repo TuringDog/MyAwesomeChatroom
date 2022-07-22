@@ -1,13 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './index.css';
 import App from './App';
+import RoomList from './components/RoomList';
+import Page404 from './pages/404/page404';
 import reportWebVitals from './reportWebVitals';
+
+export default function Entrance(){
+
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route index element={<App />} />
+        <Route path="rooms" element={<RoomList />} />
+        <Route path="*" element={<Page404 />} />
+      </Routes>
+    </BrowserRouter>
+  )
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Entrance />
   </React.StrictMode>
 );
 

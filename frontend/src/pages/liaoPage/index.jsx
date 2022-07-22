@@ -3,7 +3,6 @@ import { useSpring, animated } from 'react-spring'
 import reactLogo from '../../assets/react.svg'
 import '../../App.css'
 import RoomCard from '../../components/RoomCard'
-import RoomList from '../../components/RoomList'
 //import test from './test.html'
 
 function LiaoPage() {
@@ -37,7 +36,6 @@ function LiaoPage() {
           </form>
         </div>
         <p className="read-the-docs">
-          <RoomList/>
         </p>
       </animated.div>
     </div>
