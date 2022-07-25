@@ -1,17 +1,17 @@
 import { useState } from 'react'
 import { useSpring, animated } from 'react-spring'
 import reactLogo from '../../assets/react.svg'
-import '../../App.css'
-import RoomTag from '../../components/RoomTag'
+import './loginRegister.css'
+import RoomCard from '../../components/RoomCard'
 //import test from './test.html'
 
-function LiaoPage() {
+export default function LoginRegister() {
   const [count, setCount] = useState(0)
   const props1 = useSpring({ to: { opacity: 1 }, from: { opacity: 0 }, to:{y:0}, from:{y:-500}, delay:200})
   const props2 = useSpring({ to: { opacity: 1 }, from: { opacity: 0 }, to:{y:0}, from:{y:500}, delay:200})
   return (
     <div className="App">
-      <RoomTag/>
+      <RoomCard/>
       <animated.div style={props1}>
         <div>
           <a href="" target="_blank">
@@ -36,11 +36,8 @@ function LiaoPage() {
           </form>
         </div>
         <p className="read-the-docs">
-          Click on the Vite and React logos to learn more
         </p>
       </animated.div>
     </div>
   )
 }
-
-export default LiaoPage

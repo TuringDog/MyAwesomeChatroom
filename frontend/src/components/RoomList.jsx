@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import RoomCard from './RoomCard'
 // import React from 'react';
 
 
@@ -30,13 +31,25 @@ export default function RoomList(){
         }
         getRoomList().catch(console.error);
         
-    },[]);
+    },[roomList]);
+
+    const cards=roomList?.map(item=>{
+        return (
+            // <div></div>
+            <RoomCard 
+                name={item.name}
+                description={item.description}
+                id={item.id}
+            />
+        )
+    })
+    
 
     return isLoading ? (<h1>Loading</h1>) : (
         <div>
-        <div>ROOM LIST</div>
-        <div>First Room Name</div>
-        <div>{roomList[0]?.name}</div>
+            {/* <p> asds</p> */}
+            {cards}
+            {roomList[0].name}
         </div>
     );
 }
