@@ -80,7 +80,8 @@ def room(request, pk):
             room=room, 
             body=request.POST.get('body')
         )
-        room.participants.add(request.user)
+        if request.user not in participants:
+            room.participants.add(request.user)
         return redirect('room', pk=room.id)
     context={'room':room, 'room_messages':room_messages, 'participants':participants}
     return render(request, 'base/room.html', context)
