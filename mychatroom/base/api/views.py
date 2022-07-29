@@ -45,6 +45,6 @@ def getSampleMessages(request):
 
 @api_view(['GET'])
 def getMessagesByRoom(request, pk):
-    roomMessages=Message.objects.get(id=pk)
+    roomMessages=Message.objects.filter(room_id=pk)
     serializer=MessageSerializer(roomMessages, many=True)
     return Response(serializer.data)
