@@ -1,8 +1,6 @@
 from dataclasses import field
 from rest_framework.serializers import ModelSerializer
-from base.models import Room
-from base.models import Topic
-from base.models import Message
+from base.models import Room, Topic, Message, User, UserDetail
 
 class RoomSerializer(ModelSerializer):
     class Meta:
@@ -17,4 +15,14 @@ class TopicSerializer(ModelSerializer):
 class MessageSerializer(ModelSerializer):
     class Meta:
         model=Message
+        fields='__all__'
+
+class UserSerializer(ModelSerializer):
+    class Meta:
+        model=User
+        fields='__all__'
+
+class ProfileSerializer(ModelSerializer):
+    class Meta:
+        model=UserDetail
         fields='__all__'
