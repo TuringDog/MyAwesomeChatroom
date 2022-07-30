@@ -12,6 +12,7 @@ export default function Navbar(){
             </a>
             <h3>Location 1</h3>
             <h3>Location 2</h3>
+            <div></div>
         </div>
     )
 }

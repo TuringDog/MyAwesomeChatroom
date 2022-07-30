@@ -14,14 +14,29 @@ async function getMessageListFromApi(){
 
 }
 
-export default function MessageList(){
+async function getRoomMessageFromApi(roomID){
+    const url = 'http://127.0.0.1:8000/api/messages/'+roomID.toString()
+    try{
+        const response = await fetch(url);
+        const ReponseJson = await response.json();
+        console.log(ReponseJson);
+        return ReponseJson;
+    } catch(error){
+        console.log(error);
+        return [];
+    }
+
+}
+
+export default function MessageList({id}){
     const [messageList, setMessageList] = useState(undefined);
     const [isLoading, setIsLoading] = useState(true);
     
     useEffect(()=>{
         console.log("useEffect");
         async function getMessageList(){
-            const messageListFromApi = await getMessageListFromApi();
+            const messageListFromApi = typeof id == 'undefined'? 
+                await getMessageListFromApi() : await getRoomMessageFromApi(id);
             console.log("topic List",messageListFromApi);
             setMessageList(messageListFromApi);
             setIsLoading(false);

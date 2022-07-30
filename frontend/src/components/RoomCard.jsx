@@ -6,11 +6,8 @@ export default function RoomTag({name, description, id}){
     return (
         <div>
             <img src='' className=''/>
-            <div>
-                <span>{name}</span>
-            </div>
+            <a href={"room/"+id}>{id}. {name}</a>
             <p>{description}</p>
-            <p>{id}</p>
         </div>
     )
 }

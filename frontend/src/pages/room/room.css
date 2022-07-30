@@ -1,0 +1,6 @@
+.messageWindow{
+    background-color:aqua;
+    height: 5cm;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}

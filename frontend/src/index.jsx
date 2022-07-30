@@ -6,6 +6,7 @@ import LoginRegister from './pages/loginRegister/loginRegister';
 import HomePage from './pages/home/home';
 import Page404 from './pages/404/page404';
 import reportWebVitals from './reportWebVitals';
+import Room from './pages/room/room';
 
 //import './index.css';
 
@@ -17,6 +18,7 @@ export default function Entrance(){
       <Routes>
         <Route index element={<LoginRegister />} />
         <Route path="home" element={<HomePage />} />
+        <Route path="room/:id" element={<Room />} />
         <Route path="*" element={<Page404 />} />
       </Routes>
     </BrowserRouter>
