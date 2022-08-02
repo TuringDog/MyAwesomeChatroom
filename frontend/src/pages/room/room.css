@@ -1,6 +1,28 @@
 .messageWindow{
-    background-color:aqua;
-    height: 5cm;
+    background-color:lightgray;
+    height:20cm;
+    text-align: left;
+    padding: 15px;
+}
+
+.messageDisplay{
+    height: 16cm;
     overflow-y: scroll;
     scroll-behavior: smooth;
+}
+
+.messageInput{
+    background-color: gray;
+    padding: 5px;
+    height: 4cm;
+}
+
+.participants{
+    background-color:gray;
+    height: 20cm;
+}
+
+.panel{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
 }

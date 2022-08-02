@@ -47,7 +47,12 @@ export default function MessageList({id}){
 
     const messageCards=messageList?.map(item=>{
         return (
-            <p>{item.body}</p>
+            <div>
+                <p>{item.user} {item.updated}</p>
+                <p>{item.body}</p>
+                <hr />
+            </div>
+            
         )
     })
     

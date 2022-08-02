@@ -1,0 +1,16 @@
+.card{
+    background-color: gray;
+    height: 3cm;
+    display: grid;
+    grid-template-columns: 1fr 8fr 1fr;
+    margin: 0.2cm;
+}
+
+.info{
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+.roomEntrance{
+    color: aquamarine;
+}

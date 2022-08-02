@@ -8,7 +8,7 @@ import Page404 from './pages/404/page404';
 import reportWebVitals from './reportWebVitals';
 import Room from './pages/room/room';
 
-//import './index.css';
+import './index.css';
 
 
 export default function Entrance(){

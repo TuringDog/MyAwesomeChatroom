@@ -11,7 +11,6 @@ export default function LoginRegister() {
   const props2 = useSpring({ to: { opacity: 1 }, from: { opacity: 0 }, to:{y:0}, from:{y:500}, delay:200})
   return (
     <div className="App">
-      <RoomCard/>
       <animated.div style={props1}>
         <div>
           <a href="" target="_blank">
@@ -25,7 +24,7 @@ export default function LoginRegister() {
         <h3>A Chatroom That Satisfies Everyone</h3>
       </animated.div>
       <animated.div style={props2}>
-        <div className="card">
+        <div className="userInput">
           <form method="POST" action="">
               <input type="text" name="username" placeholder="Username"/>
               <br/>
