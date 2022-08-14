@@ -4,8 +4,15 @@ from . import views
 urlpatterns = [
     path('',views.getRoutes),
 
+    # check user status
+    path('authenticated/', views.CheckAuthenticatedView.as_view()), 
+
+    # login logout
+    path('login/', views.LoginView.as_view()),
+    path('logout/', views.LogoutView.as_view()),
+
     # GET api for user & user profile
-    path('profile/<str:pk>', views.getUserProfile), 
+    path('profile/', views.UserProfile.as_view()), 
 
     # GET api for room info
     path('rooms/', views.getRooms),

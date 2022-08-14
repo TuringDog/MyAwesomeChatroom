@@ -1,21 +1,8 @@
 import React, {useEffect, useState} from 'react';
-
-async function getMessageListFromApi(){
-    const url = 'http://127.0.0.1:8000/api/messages/'
-    try{
-        const response = await fetch(url);
-        const ReponseJson = await response.json();
-        console.log(ReponseJson);
-        return ReponseJson;
-    } catch(error){
-        console.log(error);
-        return [];
-    }
-
-}
+import {useParams} from "react-router-dom"
 
 async function getRoomMessageFromApi(roomID){
-    const url = 'http://127.0.0.1:8000/api/messages/'+roomID.toString()
+    const url = 'http://127.0.0.1:8000/api/profile/'+roomID.toString()
     try{
         const response = await fetch(url);
         const ReponseJson = await response.json();
@@ -28,15 +15,16 @@ async function getRoomMessageFromApi(roomID){
 
 }
 
-export default function MessageList({id}){
+export default function MessageList(){
     const [messageList, setMessageList] = useState(undefined);
     const [isLoading, setIsLoading] = useState(true);
     
+    const {id}=useParams()
+
     useEffect(()=>{
         console.log("useEffect");
         async function getMessageList(){
-            const messageListFromApi = typeof id == 'undefined'? 
-                await getMessageListFromApi() : await getRoomMessageFromApi(id);
+            const messageListFromApi = await getRoomMessageFromApi(id);
             console.log("topic List",messageListFromApi);
             setMessageList(messageListFromApi);
             setIsLoading(false);
@@ -48,8 +36,7 @@ export default function MessageList({id}){
     const messageCards=messageList?.map(item=>{
         return (
             <div>
-                <p>{item.user.username} {item.message.updated}</p>
-                <p>{item.message.body}</p>
+                <h3>{item.profile.nickname}</h3>
                 <hr />
             </div>
             

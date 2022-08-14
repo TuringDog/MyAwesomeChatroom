@@ -7,6 +7,7 @@ import HomePage from './pages/home/home';
 import Page404 from './pages/404/page404';
 import reportWebVitals from './reportWebVitals';
 import Room from './pages/room/room';
+import UserProfile from './pages/userProfile/userProfile';
 
 import './index.css';
 
@@ -19,6 +20,7 @@ export default function Entrance(){
         <Route index element={<LoginRegister />} />
         <Route path="home" element={<HomePage />} />
         <Route path="room/:id" element={<Room />} />
+        <Route path="profile/:id" element={<UserProfile />} />
         <Route path="*" element={<Page404 />} />
       </Routes>
     </BrowserRouter>
