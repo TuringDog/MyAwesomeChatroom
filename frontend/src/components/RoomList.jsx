@@ -35,7 +35,6 @@ export default function RoomList(){
 
     const cards=roomList?.map(item=>{
         return (
-            // <div></div>
             <RoomCard 
                 name={item.name}
                 description={item.description}
@@ -47,9 +46,7 @@ export default function RoomList(){
 
     return isLoading ? (<h1>Loading</h1>) : (
         <div>
-            {/* <p> asds</p> */}
             {cards}
-            {roomList[0].name}
         </div>
     );
 }
